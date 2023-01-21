@@ -1,15 +1,21 @@
 import { StyleSheet } from 'react-native';
-
-import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
+import { useQuery, gql } from '@apollo/client';
 
-export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
+const HELLO_QUERY = gql`
+  {
+    hello
+  }
+`;
+
+export default function TabOneScreen({
+  navigation,
+}: RootTabScreenProps<'TabOne'>) {
+  const { loading, error, data } = useQuery(HELLO_QUERY);
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
+      <Text style={styles.title}>Hello {data ? data.feed : '?'}</Text>
     </View>
   );
 }
@@ -23,10 +29,5 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
   },
 });
