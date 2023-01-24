@@ -1,13 +1,20 @@
 import { Text, View, StyleSheet } from 'react-native';
 import { RootTabScreenProps } from '../types';
+import { useQuery, gql } from '@apollo/client';
+
+const HELLO_QUERY = gql`
+  {
+    hello
+  }
+`;
 
 export default function TabOneScreen({
   navigation,
 }: RootTabScreenProps<'TabOne'>) {
+  const { loading, error, data } = useQuery(HELLO_QUERY);
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} />
+      <Text style={styles.title}>Hello {data ? data.hello : '?'}</Text>
     </View>
   );
 }
@@ -21,10 +28,5 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
   },
 });
