@@ -1,19 +1,26 @@
-# 의존성 설치
+# 시작하기
 
-## Repository Clone 시
+'시작하기' 항목은 이 repo를 clone한 후, 최초 1번만 수행하면 됩니다.
+
+## 의존성 설치
 
 ```bash
 yarn install
 ```
 
-## 의존성 추가
+## (optional) GraphQL API URL 설정
+
+- GraphQL API URL은 기본적으로 http://localhost:3000/api/graphql 입니다.
+- Expo Go 사용 등을 이유로 URL 변경 필요 시, `.env.local` 파일을 통해 변경할 수 있습니다. ([참고: 환경변수 설정](#로컬에-맞게-변경))
+
+# 의존성 추가
 
 ```bash
-npx expo install package-name
+yarn expo install package-name
 ```
 
 - expo package의 경우 expo install로 설치해야 합니다.
-- 일반 npm package의 경우도 expo install이 내부적으로 npm을 호출해 설치됩니다.
+- 일반 npm package의 경우도 expo install이 내부적으로 yarn을 호출해 설치됩니다.
 
 # 실행
 
@@ -50,24 +57,79 @@ yarn run web
 
 # 빌드
 
-TODO
+TODO: ESA 사용
+
+# 환경변수 설정
+
+![dotenv-flow + expo-constants](../docs/env-var.png)
+
+## 기본값
+
+- .env 파일에 기본 환경변수가 설정되어 있습니다.
+
+## 로컬에 맞게 변경
+
+- .env.local 파일을 생성해 .env 파일의 환경변수를 덮어 쓸 수 있습니다.
+- \*.local 파일은 git에 의해 무시되므로, 로컬에서만 필요한 환경변수를 설정할 때 유용합니다.
+
+## 코드에서 읽기
+
+```javascript
+import Constants from 'expo-constants'
+
+console.log(Constants.expoConfig!.extra!.API_URL)
+```
+
+## development, production 시 환경변수 설정
+
+- development, production시 따로 환경변수를 지정 할 수도 있습니다.
+
+  ```bash
+  NODE_ENV=production expo start
+
+  ```
 
 # 프로젝트 생성 과정
 
 > 주의!<br/>이 문단은 기록용이므로, 아래 명령어를 따라하실 필요는 없습니다.
 
-> 이 repo를 clone한 경우에는 [의존성 설치](#의존성-설치) 항목을 따라주시기 바랍니다.
+> 이 repo를 clone한 경우에는 [시작하기](#시작하기) 항목을 따라주시기 바랍니다.
 
 1. create-next-app의 template으로 생성
    ```bash
-   npx create-expo-app --template
+   yarn create expo-app --template
    # navigation(Typescript) 템플릿 선택
    ```
 2. expo-for-web 사용을 위해 의존성 설치
    ```bash
-   npx expo install @expo/webpack-config
+   yarn expo install @expo/webpack-config
    ```
+3. 환경변수(`.env` 파일) 사용 설정
+   - dotenv-flow 설치
+     ```
+     yarn expo install dotenv-flow
+     ```
+   - dotenv-flow로 `.env` 파일에서 환경변수 읽음
+   - `app.config.js`의 `extra` 필드로 환경변수 전달
+4. Expo 프로젝트에 Apollo Client 추가
+   - 의존성 설치
+     ```bash
+     yarn expo install @apollo/client graphql
+     ```
+   - `App.tsx`에 client 설정
 
 # 참고자료
 
+## Expo
+
 - [create-expo-app](https://docs.expo.dev/get-started/create-a-new-app)
+
+## 환경변수
+
+- [Environment Variable in Expo](https://docs.expo.dev/guides/environment-variables/)
+- [dotenv-flow](https://github.com/kerimdzhanov/dotenv-flow)
+
+## Apollo Client
+
+- [React + Apollo Client Tutorial](https://www.howtographql.com/react-apollo/1-getting-started/)
+- [Apollo Client 공식문서: integration with RN](https://www.apollographql.com/docs/react/integrations/react-native/)
