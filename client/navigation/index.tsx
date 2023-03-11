@@ -10,6 +10,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { Pressable } from 'react-native';
 
+import PermissionScreen from '../screens/PermissionScreen';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import TabOneScreen from '../screens/TabOneScreen';
@@ -22,6 +23,12 @@ import {
 import LinkingConfiguration from './LinkingConfiguration';
 
 export default function Navigation() {
+  const hasPermmissions = true;
+
+  if (!hasPermmissions) {
+    return <PermissionScreen />;
+  }
+
   return (
     <NavigationContainer linking={LinkingConfiguration}>
       <RootNavigator />
