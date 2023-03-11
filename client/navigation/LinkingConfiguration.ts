@@ -13,6 +13,11 @@ const linking: LinkingOptions<RootStackParamList> = {
   prefixes: [Linking.createURL('/')],
   config: {
     screens: {
+      Auth: {
+        screens: {
+          SignIn: 'signin',
+        },
+      },
       Root: {
         screens: {
           TabOne: {

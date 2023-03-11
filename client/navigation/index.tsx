@@ -16,11 +16,13 @@ import NotFoundScreen from '../screens/NotFoundScreen';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import {
+  AuthStackParamList,
   RootStackParamList,
   RootTabParamList,
   RootTabScreenProps,
 } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
+import SignInScreen from '../screens/SignInScreen';
 
 export default function Navigation() {
   const hasPermmissions = true;
@@ -43,22 +45,50 @@ export default function Navigation() {
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
+  const isAuthenticated = true;
+
   return (
     <Stack.Navigator>
-      <Stack.Screen
-        name="Root"
-        component={BottomTabNavigator}
+      {!isAuthenticated ? (
+        <Stack.Screen
+          name="Auth"
+          component={AuthNavigator}
+          options={{ headerShown: false }}
+        />
+      ) : (
+        <>
+          <Stack.Screen
+            name="Root"
+            component={BottomTabNavigator}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="NotFound"
+            component={NotFoundScreen}
+            options={{ title: 'Oops!' }}
+          />
+          <Stack.Group screenOptions={{ presentation: 'modal' }}>
+            <Stack.Screen name="Modal" component={ModalScreen} />
+          </Stack.Group>
+        </>
+      )}
+    </Stack.Navigator>
+  );
+}
+
+/**
+ * AuthNavigator is for sign in & sign up
+ */
+const AuthStack = createNativeStackNavigator<AuthStackParamList>();
+function AuthNavigator() {
+  return (
+    <AuthStack.Navigator>
+      <AuthStack.Screen
+        name="SignIn"
+        component={SignInScreen}
         options={{ headerShown: false }}
       />
-      <Stack.Screen
-        name="NotFound"
-        component={NotFoundScreen}
-        options={{ title: 'Oops!' }}
-      />
-      <Stack.Group screenOptions={{ presentation: 'modal' }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
-      </Stack.Group>
-    </Stack.Navigator>
+    </AuthStack.Navigator>
   );
 }
 
