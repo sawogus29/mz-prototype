@@ -1,5 +1,5 @@
 import { Text, View, StyleSheet } from 'react-native';
-import { RootTabScreenProps } from '../types';
+import { RootTabScreenProps } from '../navigation/types';
 import { useQuery, gql } from '@apollo/client';
 
 const HELLO_QUERY = gql`
