@@ -1,9 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { ThemeProvider } from '@rneui/themed';
 import Constants from 'expo-constants';
 
 import useCachedResources from './hooks/useCachedResources';
 import Navigation from './navigation';
+import theme from './theme';
 
 import {
   ApolloProvider,
@@ -29,10 +31,12 @@ export default function App() {
   } else {
     return (
       <ApolloProvider client={client}>
-        <SafeAreaProvider>
-          <Navigation />
-          <StatusBar />
-        </SafeAreaProvider>
+        <ThemeProvider theme={theme}>
+          <SafeAreaProvider>
+            <Navigation />
+            <StatusBar />
+          </SafeAreaProvider>
+        </ThemeProvider>
       </ApolloProvider>
     );
   }
