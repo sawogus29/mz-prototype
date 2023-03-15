@@ -1,6 +1,6 @@
 import { createTheme } from '@rneui/themed';
 
-const defaultFontFamily = 'space-mono'; // should be pretendard
+const defaultFontFamily = 'pretendard'; // should be pretendard
 
 const theme = createTheme({
   components: {
