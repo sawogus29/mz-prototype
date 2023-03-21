@@ -15,6 +15,7 @@ import {
   InMemoryCache,
 } from '@apollo/client';
 import { Platform } from 'react-native';
+import { AuthProvider } from '../store/auth/auth-context';
 
 const httpLink = createHttpLink({
   uri: Constants.expoConfig!.extra!.API_URL,
@@ -46,8 +47,10 @@ export default function RootLayout() {
     <ApolloProvider client={client}>
       <ThemeProvider theme={theme}>
         <SafeAreaProvider>
-          <StatusBar />
-          <Slot />
+          <AuthProvider>
+            <StatusBar />
+            <Slot />
+          </AuthProvider>
         </SafeAreaProvider>
       </ThemeProvider>
     </ApolloProvider>
