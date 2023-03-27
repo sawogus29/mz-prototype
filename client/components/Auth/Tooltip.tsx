@@ -1,6 +1,8 @@
 import { Text } from '@rneui/themed';
 import { StyleSheet, View } from 'react-native';
 
+import scale from './scale';
+
 interface TooltipProps {
   title: string;
 }
@@ -9,7 +11,7 @@ export default function Tooltip({ title }: TooltipProps) {
   return (
     <View style={styles.container}>
       <View style={styles.tooltip}>
-        <Text>{title}</Text>
+        <Text style={styles.title}>{title}</Text>
       </View>
       <View style={styles.pointer}></View>
     </View>
@@ -18,23 +20,23 @@ export default function Tooltip({ title }: TooltipProps) {
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 16,
+    marginBottom: 16 * scale,
   },
   tooltip: {
     // zIndex: 1,
-    width: 184,
-    height: 44,
+    width: 184 * scale,
+    height: 44 * scale,
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
     backgroundColor: '#fff',
-    borderRadius: 100,
+    borderRadius: 100 * scale,
     shadowColor: 'rgba(0, 0, 0, 0.5)',
     shadowOffset: {
-      width: 0,
-      height: 2,
+      width: 0 * scale,
+      height: 2 * scale,
     },
-    shadowRadius: 8,
+    shadowRadius: 8 * scale,
     shadowOpacity: 1,
     elevation: 8,
   },
@@ -43,17 +45,20 @@ const styles = StyleSheet.create({
     width: 0,
     height: 0,
     borderTopColor: 'transparent',
-    borderTopWidth: 8,
+    borderTopWidth: 8 * scale,
 
-    borderRightWidth: 16,
+    borderRightWidth: 16 * scale,
     borderRightColor: '#fff',
 
-    borderBottomWidth: 8,
+    borderBottomWidth: 8 * scale,
     borderBottomColor: 'transparent',
 
     left: '50%',
-    marginLeft: -8,
-    bottom: -8,
+    marginLeft: -8 * scale,
+    bottom: -8 * scale,
     transform: [{ rotate: '270deg' }],
+  },
+  title: {
+    fontSize: 14 * scale,
   },
 });
