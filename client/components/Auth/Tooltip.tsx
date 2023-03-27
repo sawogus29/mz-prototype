@@ -21,6 +21,8 @@ export default function Tooltip({ title }: TooltipProps) {
 const styles = StyleSheet.create({
   container: {
     marginBottom: 16 * scale,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   tooltip: {
     // zIndex: 1,
@@ -53,7 +55,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 8 * scale,
     borderBottomColor: 'transparent',
 
-    left: '50%',
     marginLeft: -8 * scale,
     bottom: -8 * scale,
     transform: [{ rotate: '270deg' }],

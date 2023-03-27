@@ -1,21 +1,46 @@
 import { Button } from '@rneui/themed';
-import { ReactElement } from 'react';
+import { StyleSheet } from 'react-native';
+import { SvgProps } from 'react-native-svg';
+
+import scale from './scale';
 
 interface SignInButtonProps {
-  iconComponent: ReactElement;
+  IconComponent: React.FC<SvgProps>;
   title: string;
-  onPress: () => void;
+  backgroundColor: string;
+  onPress?: () => void;
 }
 
 export default function SignInButton({
-  iconComponent,
+  IconComponent,
   title,
+  backgroundColor,
   onPress,
 }: SignInButtonProps) {
   return (
-    <Button containerStyle={{ marginBottom: 12 }}>
-      {iconComponent}
+    <Button
+      titleStyle={styles.buttonTitle}
+      buttonStyle={[styles.button, { backgroundColor }]}
+      onPress={onPress}
+    >
+      <IconComponent
+        width={15 * scale}
+        height={15 * scale}
+        style={styles.buttonIcon}
+      />
       {title}
     </Button>
   );
 }
+const styles = StyleSheet.create({
+  button: {
+    paddingVertical: 11 * scale,
+    marginBottom: 12 * scale,
+  },
+  buttonTitle: {
+    fontSize: 18 * scale,
+  },
+  buttonIcon: {
+    marginRight: 8 * scale,
+  },
+});
