@@ -1,6 +1,8 @@
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button, Icon, Text } from '@rneui/themed';
 import { Image, StyleSheet, View } from 'react-native';
+import IconNaver from '../../assets/images/icon-naver.svg';
+import IconApple from '../../assets/images/icon-apple.svg';
 
 import scale from './scale';
 import Tooltip from './Tooltip';
@@ -13,8 +15,10 @@ export default function SignInContent() {
           style={styles.logo}
           source={require('../../assets/images/logo_big.png')}
         />
-        <Text style={styles.description}>미어제트만 믿으세요.</Text>
-        <Text style={styles.description}>책임지고 매장을 지켜볼게요.</Text>
+        <Text style={styles.description}>
+          미어제트만 믿으세요.{'\n'}
+          책임지고 매장을 지켜볼게요.
+        </Text>
         <Image
           style={styles.backgroundImage}
           source={require('../../assets/images/signin-background.png')}
@@ -25,14 +29,24 @@ export default function SignInContent() {
             titleStyle={styles.buttonTitle}
             buttonStyle={[styles.button, styles.naverButton]}
           >
-            {/* <Icon name="save" color="white" containerStyle={{ marginRight: 5 }} /> */}
+            <IconNaver
+              width={15 * scale}
+              height={15 * scale}
+              style={styles.buttonIcon}
+            />
             네이버로 계속하기
           </Button>
           <Button
-            title={'Apple로 계속하기'}
             titleStyle={styles.buttonTitle}
             buttonStyle={[styles.button, styles.appleButton]}
-          />
+          >
+            <IconApple
+              width={15 * scale}
+              height={15 * scale}
+              style={styles.buttonIcon}
+            />
+            Apple로 계속하기
+          </Button>
         </View>
       </View>
     </SafeAreaView>
@@ -88,5 +102,8 @@ const styles = StyleSheet.create({
   },
   appleButton: {
     backgroundColor: '#000000',
+  },
+  buttonIcon: {
+    marginRight: 8 * scale,
   },
 });
