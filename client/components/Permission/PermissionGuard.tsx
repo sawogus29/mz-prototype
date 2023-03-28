@@ -10,8 +10,8 @@ export function PermissionGuard(props: React.PropsWithChildren) {
   const [cameraStatus, requestCameraPermission] = useCameraPermissions();
   const [notificationStatus, requestNotificationPermission] =
     useNotificationPermission();
-  // const hasAllPerms = cameraStatus?.granted && notificationStatus?.granted;
-  const hasAllPerms = false;
+  const hasAllPerms = cameraStatus?.granted && notificationStatus?.granted;
+  // const hasAllPerms = false;
 
   if (!hasAllPerms) {
     return (
