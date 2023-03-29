@@ -9,8 +9,10 @@ import scale from './scale';
 import Tooltip from './Tooltip';
 import SignInButton from './SignInButton';
 import colors from '../../theme/colors';
+import { useAuth } from '../../store/auth/auth-context';
 
 export default function SignInContent() {
+  const { signIn } = useAuth();
   return (
     <>
       <Image
@@ -38,11 +40,13 @@ export default function SignInContent() {
               title="네이버로 계속하기"
               IconComponent={IconNaver}
               backgroundColor="#03c75a"
+              onPress={() => signIn()}
             />
             <SignInButton
               title="Apple로 계속하기"
               IconComponent={IconApple}
               backgroundColor="#000000"
+              onPress={() => signIn()}
             />
           </View>
         </View>
