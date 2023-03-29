@@ -1,9 +1,5 @@
-import { Text, View, StyleSheet } from 'react-native';
+import WelcomeContent from '../../components/Welcome/WelcomeContent';
 
 export default function WelcomeScreen() {
-  return (
-    <View>
-      <Text>Welcome</Text>
-    </View>
-  );
+  return <WelcomeContent />;
 }
