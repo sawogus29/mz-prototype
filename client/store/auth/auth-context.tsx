@@ -1,9 +1,22 @@
-// @ts-nocheck
 // https://expo.github.io/router/docs/guides/auth
 import { useRouter, useSegments } from 'expo-router';
 import React from 'react';
 
-const AuthContext = React.createContext(null);
+type User = {
+  firstTime?: boolean;
+} | null;
+
+type AuthContextObj = {
+  signIn: () => void;
+  signOut: () => void;
+  user: User;
+};
+
+const AuthContext = React.createContext<AuthContextObj>({
+  signIn: () => {},
+  signOut: () => {},
+  user: null,
+});
 
 // This hook can be used to access the user info.
 export function useAuth() {
@@ -11,7 +24,7 @@ export function useAuth() {
 }
 
 // This hook will protect the route access based on user authentication.
-function useProtectedRoute(user) {
+function useProtectedRoute(user: User) {
   const segments = useSegments();
   const router = useRouter();
 
@@ -32,15 +45,15 @@ function useProtectedRoute(user) {
   }, [user, segments]);
 }
 
-export function AuthProvider(props) {
-  const [user, setAuth] = React.useState(null);
+export function AuthProvider(props: React.PropsWithChildren) {
+  const [user, setAuth] = React.useState<User>(null);
 
   useProtectedRoute(user);
 
   return (
     <AuthContext.Provider
       value={{
-        signIn: () => setAuth({}),
+        signIn: () => setAuth({ firstTime: true }),
         signOut: () => setAuth(null),
         user,
       }}
