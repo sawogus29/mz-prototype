@@ -1,14 +1,17 @@
 import { Button } from '@rneui/themed';
-import { Redirect, useRouter } from 'expo-router';
 import { Text, View, Image, StyleSheet } from 'react-native';
 
-import { useAuth } from '../../store/auth/auth-context';
 import colors from '../../theme/colors';
 
-export default function WelcomeContent() {
-  const router = useRouter();
-  const { unsetFirstTime } = useAuth();
+interface WelcomeContentProps {
+  goHome: () => void;
+  goShopRegistration: () => void;
+}
 
+export default function WelcomeContent({
+  goHome,
+  goShopRegistration,
+}: WelcomeContentProps) {
   return (
     <View style={styles.container}>
       <View style={styles.innerContainer}>
@@ -29,17 +32,14 @@ export default function WelcomeContent() {
             containerStyle={styles.yesButtonContainer}
             buttonStyle={styles.yesButton}
             titleStyle={styles.yesButtonTitle}
-            onPress={() => {
-              unsetFirstTime();
-              router.replace('/(main)/(tabs)/statistic');
-            }}
+            onPress={goShopRegistration}
           />
           <Button
             title="지금은 괜찮아요."
             type="clear"
             buttonStyle={styles.noButton}
             titleStyle={styles.noButtonTitle}
-            onPress={() => unsetFirstTime()}
+            onPress={goHome}
           />
         </View>
       </View>
