@@ -9,12 +9,14 @@ type User = {
 type AuthContextObj = {
   signIn: () => void;
   signOut: () => void;
+  unsetFirstTime: () => void;
   user: User;
 };
 
 const AuthContext = React.createContext<AuthContextObj>({
   signIn: () => {},
   signOut: () => {},
+  unsetFirstTime: () => {},
   user: null,
 });
 
@@ -53,8 +55,10 @@ export function AuthProvider(props: React.PropsWithChildren) {
   return (
     <AuthContext.Provider
       value={{
+        // TODO: replace mock signIn
         signIn: () => setAuth({ firstTime: true }),
         signOut: () => setAuth(null),
+        unsetFirstTime: () => setAuth({ ...user, firstTime: false }),
         user,
       }}
     >
