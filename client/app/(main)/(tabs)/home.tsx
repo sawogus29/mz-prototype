@@ -1,17 +1,5 @@
-import { Text, View, StyleSheet } from 'react-native';
-import { useQuery, gql } from '@apollo/client';
+import HomeContent from '../../../components/Home/HomeContent';
 
-const HELLO_QUERY = gql`
-  {
-    hello
-  }
-`;
-
-export default function TabOneScreen() {
-  const { loading, error, data } = useQuery(HELLO_QUERY);
-  return (
-    <View>
-      <Text>Hello {data ? data.hello : '?'}</Text>
-    </View>
-  );
+export default function HomeScreen() {
+  return <HomeContent />;
 }
