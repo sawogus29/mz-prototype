@@ -1,5 +1,7 @@
-import { Text, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import { Text } from '@rneui/themed';
 import { useQuery, gql } from '@apollo/client';
+import { Link } from 'expo-router';
 
 const HELLO_QUERY = gql`
   {
@@ -11,6 +13,9 @@ export default function HomeContent() {
   const { loading, error, data } = useQuery(HELLO_QUERY);
   return (
     <View>
+      <Link href="/(main)/shop-registration">
+        <Text h1>매장등록</Text>
+      </Link>
       <Text>Hello {data ? data.hello : '?'}</Text>
     </View>
   );

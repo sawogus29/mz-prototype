@@ -1,8 +1,9 @@
-import { Redirect, useRouter } from 'expo-router';
+import { Redirect, Stack, useRouter } from 'expo-router';
 
 import WelcomeContent from '../../components/Welcome/WelcomeContent';
 import { useReplaceExitWith } from '../../hooks/useReplaceExitWith';
 import { useAuth } from '../../store/auth/auth-context';
+import MeerzetLogo from '../../assets/images/logo_medium.svg';
 
 export default function WelcomeScreen() {
   const { user } = useAuth();
@@ -23,6 +24,11 @@ export default function WelcomeScreen() {
   useReplaceExitWith('/(main)/(tabs)/home');
 
   return (
-    <WelcomeContent goHome={goHome} goShopRegistration={goShopRegistration} />
+    <>
+      <Stack.Screen
+        options={{ headerTitle: () => <MeerzetLogo width={120} height={20} /> }}
+      />
+      <WelcomeContent goHome={goHome} goShopRegistration={goShopRegistration} />
+    </>
   );
 }
