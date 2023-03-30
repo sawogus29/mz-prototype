@@ -1,8 +1,7 @@
 import { Redirect, useRouter } from 'expo-router';
-import { useEffect } from 'react';
-import { BackHandler } from 'react-native';
 
 import WelcomeContent from '../../components/Welcome/WelcomeContent';
+import { useReplaceExitWith } from '../../hooks/useReplaceExitWith';
 import { useAuth } from '../../store/auth/auth-context';
 
 export default function WelcomeScreen() {
@@ -18,20 +17,10 @@ export default function WelcomeScreen() {
   };
 
   const goShopRegistration = () => {
-    router.replace('/(main)/(tabs)/statistic');
+    router.replace('/(main)/shop-registration');
   };
 
-  // Prevent Android BackButton from quitting
-  // instead it redirects to home screen
-  useEffect(() => {
-    const subscribe = BackHandler.addEventListener('hardwareBackPress', () => {
-      console.log('in back');
-      router.replace('/(main)/(tabs)/home');
-      return true;
-    });
-
-    return () => subscribe.remove();
-  }, [BackHandler, router]);
+  useReplaceExitWith('/(main)/(tabs)/home');
 
   return (
     <WelcomeContent goHome={goHome} goShopRegistration={goShopRegistration} />
