@@ -2,7 +2,7 @@ import { color } from '@rneui/base';
 import { createTheme } from '@rneui/themed';
 import colors from './colors';
 
-const defaultFontFamily = 'pretendard'; // should be pretendard
+export const defaultFontFamily = 'pretendard'; // should be pretendard
 
 const theme = createTheme({
   components: {
