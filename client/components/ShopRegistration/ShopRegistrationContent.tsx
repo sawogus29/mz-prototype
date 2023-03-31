@@ -1,5 +1,33 @@
 import { Text } from '@rneui/themed';
+import { useState } from 'react';
+
+import ShopNameContent from './ShopNameContent';
+import { StyleSheet, View } from 'react-native';
+import colors from '../../theme/colors';
+
+const PAGES = [ShopNameContent];
 
 export default function ShopRegistrationContent() {
-  return <Text>Shop Registration</Text>;
+  const [pageIndex, setPageIndex] = useState(0);
+
+  const PageContent = PAGES[pageIndex];
+
+  const nextHandler = () => {
+    setPageIndex((prev) => prev + 1);
+  };
+
+  return (
+    <View style={styles.background}>
+      <PageContent onNext={nextHandler} />
+    </View>
+  );
 }
+
+const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    backgroundColor: colors.GREY900,
+  },
+});
