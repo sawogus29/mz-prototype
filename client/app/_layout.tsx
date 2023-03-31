@@ -40,10 +40,10 @@ export default function RootLayout() {
       <ThemeProvider theme={theme}>
         <SafeAreaProvider>
           <PermissionGuard>
-            <AuthProvider>
-              <StatusBar />
-              <Slot />
-            </AuthProvider>
+            {/* <AuthProvider> */}
+            <StatusBar />
+            <Slot />
+            {/* </AuthProvider> */}
           </PermissionGuard>
         </SafeAreaProvider>
       </ThemeProvider>
