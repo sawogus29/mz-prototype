@@ -5,11 +5,17 @@ import colors from '../../theme/colors';
 import ShopNameContent from './ShopNameContent';
 import ShopAddressContent from './ShopAddressContent';
 import ShopCategoryContent from './ShopCategoryContent';
+import ShopImageContent from './ShopImageContent';
 
-const PAGES = [ShopNameContent, ShopAddressContent, ShopCategoryContent];
+const PAGES = [
+  ShopNameContent,
+  ShopAddressContent,
+  ShopCategoryContent,
+  ShopImageContent,
+];
 
 export default function ShopRegistrationContent() {
-  const [pageIndex, setPageIndex] = useState(2);
+  const [pageIndex, setPageIndex] = useState(3);
 
   const PageContent = PAGES[pageIndex];
 
