@@ -1,14 +1,14 @@
-import { Text } from '@rneui/themed';
 import { useState } from 'react';
 
-import ShopNameContent from './ShopNameContent';
 import { StyleSheet, View } from 'react-native';
 import colors from '../../theme/colors';
+import ShopNameContent from './ShopNameContent';
+import ShopAddressContent from './ShopAddressContent';
 
-const PAGES = [ShopNameContent];
+const PAGES = [ShopNameContent, ShopAddressContent];
 
 export default function ShopRegistrationContent() {
-  const [pageIndex, setPageIndex] = useState(0);
+  const [pageIndex, setPageIndex] = useState(1);
 
   const PageContent = PAGES[pageIndex];
 
