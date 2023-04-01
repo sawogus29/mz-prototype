@@ -4,11 +4,12 @@ import { StyleSheet, View } from 'react-native';
 import colors from '../../theme/colors';
 import ShopNameContent from './ShopNameContent';
 import ShopAddressContent from './ShopAddressContent';
+import ShopCategoryContent from './ShopCategoryContent';
 
-const PAGES = [ShopNameContent, ShopAddressContent];
+const PAGES = [ShopNameContent, ShopAddressContent, ShopCategoryContent];
 
 export default function ShopRegistrationContent() {
-  const [pageIndex, setPageIndex] = useState(1);
+  const [pageIndex, setPageIndex] = useState(2);
 
   const PageContent = PAGES[pageIndex];
 
