@@ -6,30 +6,33 @@ import { ShopInfoContentProps } from './ShopInfoContent';
 import { Button } from '@rneui/themed';
 import colors from '../../theme/colors';
 import TextInput from '../ui/TextInput';
+import ScreenBackground from '../ui/ScreenBackground';
 
 export default function ShopAddressContent({ onNext }: ShopInfoContentProps) {
   const [hasBranch, setHasBranch] = useState(false);
 
   return (
-    <TitleButtonLayout
-      title="매장의 위치를 알려주세요."
-      buttonTitle="다음"
-      onButtonPress={onNext}
-    >
-      <View style={styles.container}>
-        <View style={styles.buildingAddressContainer}>
-          <TextInput style={styles.buildingAddressInput} editable={false} />
-          <Button
-            title="주소검색"
-            color={colors.AI_BLUE_LIGHT}
-            containerStyle={styles.buttonContainer}
-            buttonStyle={styles.button}
-            titleStyle={styles.buttonText}
-          />
+    <ScreenBackground>
+      <TitleButtonLayout
+        title="매장의 위치를 알려주세요."
+        buttonTitle="다음"
+        onButtonPress={onNext}
+      >
+        <View style={styles.container}>
+          <View style={styles.buildingAddressContainer}>
+            <TextInput style={styles.buildingAddressInput} editable={false} />
+            <Button
+              title="주소검색"
+              color={colors.AI_BLUE_LIGHT}
+              containerStyle={styles.buttonContainer}
+              buttonStyle={styles.button}
+              titleStyle={styles.buttonText}
+            />
+          </View>
+          <TextInput style={styles.detailAddressInput} />
         </View>
-        <TextInput style={styles.detailAddressInput} />
-      </View>
-    </TitleButtonLayout>
+      </TitleButtonLayout>
+    </ScreenBackground>
   );
 }
 

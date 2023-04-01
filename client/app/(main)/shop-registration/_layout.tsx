@@ -1,15 +1,11 @@
 import { Stack } from 'expo-router';
 
-export const unstable_settings = {
-  initialRouteName: '(tabs)',
-};
-
-export default function MainLayout() {
+export default function ShopRegistrationLayout() {
   return (
     <Stack
       screenOptions={{
-        headerShown: false,
         headerShadowVisible: false,
+        animation: 'none',
       }}
     />
   );
