@@ -7,6 +7,6 @@ export default function IndexScreen() {
   // And it causes infinite loop when user try to exit.
   //
   // TEMPORARY FIX => I manually cleared 'Root Navigation State' at home.tsx
-  return <Redirect href="/(main)/shop-registration" />;
-  // return <Redirect href="/(main)/welcome" />;
+  // return <Redirect href="/(main)/shop-registration" />;
+  return <Redirect href="/(main)/welcome" />;
 }
