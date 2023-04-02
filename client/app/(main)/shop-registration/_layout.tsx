@@ -1,4 +1,5 @@
 import { Stack } from 'expo-router';
+import SkipLink from '../../../components/ui/SkipLink';
 
 export default function ShopRegistrationLayout() {
   return (
@@ -6,7 +7,10 @@ export default function ShopRegistrationLayout() {
       screenOptions={{
         headerShadowVisible: false,
         animation: 'none',
+        headerTitle: '',
       }}
-    />
+    >
+      <Stack.Screen name="image" options={{ headerRight: SkipLink }} />
+    </Stack>
   );
 }
