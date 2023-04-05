@@ -7,6 +7,7 @@ interface TitleButtonLayoutProps {
   children: React.ReactNode;
   title: string;
   buttonTitle: string;
+  buttonDisabled?: boolean;
   header?: string;
   footer?: string;
   onButtonPress?: (event: GestureResponderEvent) => void;
@@ -16,6 +17,7 @@ export default function TitleButtonLayout({
   children,
   title,
   buttonTitle,
+  buttonDisabled,
   header,
   footer,
   onButtonPress,
@@ -33,6 +35,7 @@ export default function TitleButtonLayout({
         titleStyle={styles.buttonTitle}
         buttonStyle={styles.button}
         title={buttonTitle}
+        disabled={buttonDisabled}
         onPress={onButtonPress}
       />
     </View>
