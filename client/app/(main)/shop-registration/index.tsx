@@ -1,5 +1,5 @@
 import { Redirect } from 'expo-router';
 
 export default function hi() {
-  return <Redirect href="/(main)/shop-registration/address" />;
+  return <Redirect href="/(main)/shop-registration/category" />;
 }

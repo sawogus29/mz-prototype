@@ -22,6 +22,7 @@ export default function ChipGroup({ titles, onChange }: ChipGroupProps) {
     <View style={styles.container}>
       {titles.map((title, i) => (
         <Button
+          key={i}
           title={title}
           containerStyle={styles.buttonContainer}
           buttonStyle={styles.button}

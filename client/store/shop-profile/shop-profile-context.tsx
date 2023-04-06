@@ -10,7 +10,7 @@ type ShopAddress = {
   detailAddress: string;
 };
 
-const CATEGORIES = [
+export const CATEGORIES = [
   '가챠샵',
   '자판기',
   '카페',
@@ -19,7 +19,7 @@ const CATEGORIES = [
   '편의점',
   '도소매',
 ] as const;
-type ShopCategory = typeof CATEGORIES[number];
+export type ShopCategory = typeof CATEGORIES[number];
 
 type ShopImage = string | null;
 
