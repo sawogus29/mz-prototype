@@ -14,7 +14,7 @@ function verifyBranchName(branchName: string) {
 function verifyNext(brandName: string, branchName: string, hasBranch: boolean) {
   return (
     brandName.length > 0 &&
-    (!hasBranch || (branchName.length > 1 && verifyBranchName(branchName)))
+    (!hasBranch || (branchName.length > 0 && verifyBranchName(branchName)))
   );
 }
 
