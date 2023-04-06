@@ -7,9 +7,8 @@ import colors from '../../theme/colors';
 export default function SkipLink() {
   return (
     <Link
-      href="/(main)/(tabs)/home"
+      href="/(main)/shop-registration/submit"
       style={[Platform.OS === 'web' && styles.link]}
-      replace
     >
       <Text style={styles.text}>건너뛰기</Text>
     </Link>

@@ -9,7 +9,7 @@ export default function ShopImageScreen() {
     <ShopImageContent
       onNext={(image) => {
         setShopImage(image);
-        router.push('home');
+        router.push('./submit');
       }}
     />
   );

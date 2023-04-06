@@ -24,7 +24,7 @@ export type ShopCategory = typeof CATEGORIES[number];
 type ImageUri = string;
 export type ShopImage = ImageUri | null;
 
-type ShopProfile = {
+export type ShopProfile = {
   name: ShopName | undefined;
   address: ShopAddress | undefined;
   category: ShopCategory | undefined;
