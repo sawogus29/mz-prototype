@@ -21,7 +21,8 @@ export const CATEGORIES = [
 ] as const;
 export type ShopCategory = typeof CATEGORIES[number];
 
-type ShopImage = string | null;
+type ImageUri = string;
+export type ShopImage = ImageUri | null;
 
 type ShopProfile = {
   name: ShopName | undefined;
