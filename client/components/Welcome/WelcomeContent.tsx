@@ -1,7 +1,8 @@
 import { Button } from '@rneui/themed';
-import { Text, View, Image, StyleSheet } from 'react-native';
+import { Text, View, Image, StyleSheet, Dimensions } from 'react-native';
 
 import colors from '../../theme/colors';
+import ScreenBackground from '../ui/ScreenBackground';
 
 interface WelcomeContentProps {
   goHome: () => void;
@@ -13,8 +14,8 @@ export default function WelcomeContent({
   goShopRegistration,
 }: WelcomeContentProps) {
   return (
-    <View style={styles.container}>
-      <View style={styles.innerContainer}>
+    <ScreenBackground>
+      <View style={styles.container}>
         <View style={styles.contentContainer}>
           <Image
             source={require('../../assets/images/image-welcome.png')}
@@ -43,19 +44,12 @@ export default function WelcomeContent({
           />
         </View>
       </View>
-    </View>
+    </ScreenBackground>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    // backgroundColor: 'blue',
-    flex: 1,
-    alignItems: 'center',
-    paddingHorizontal: 16,
-    backgroundColor: colors.GREY900,
-  },
-  innerContainer: {
     // backgroundColor: 'red',
     flex: 1,
     alignItems: 'center',
@@ -64,12 +58,14 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     width: '100%',
+    height: '65%',
+    maxHeight: 850, // respect to maxWidth(600)
+    marginTop: Dimensions.get('window').height < 850 ? 0 : 'auto',
     marginBottom: 'auto',
   },
   image: {
     width: '100%',
-    // height: 400,
-    maxHeight: 400,
+    flex: 1,
     resizeMode: 'contain',
     marginBottom: 32,
   },
