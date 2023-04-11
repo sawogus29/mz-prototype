@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     // backgroundColor: 'blue',
     padding: 0,
+    overflow: 'hidden',
   },
   container: {
     width: '100%',
