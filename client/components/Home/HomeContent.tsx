@@ -17,6 +17,8 @@ export default function HomeContent() {
         <Text h1>매장등록</Text>
       </Link>
       <Text>Hello {data ? data.hello : '?'}</Text>
+      <Text bigTitle>bigTitle</Text>
+      <Text headline1>headline1</Text>
     </View>
   );
 }

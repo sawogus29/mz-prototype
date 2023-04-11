@@ -1,6 +1,7 @@
 import { color } from '@rneui/base';
 import { createTheme } from '@rneui/themed';
 import colors from './colors';
+import typographies from './typographies';
 
 export const defaultFontFamily = 'pretendard'; // should be pretendard
 
@@ -14,10 +15,17 @@ const theme = createTheme({
         borderRadius: 8,
       },
     },
-    Text: {
-      style: {
-        fontFamily: defaultFontFamily,
-      },
+    Text: (props) => {
+      const typoName = Object.keys(typographies).find(
+        (typoName) => typoName in props
+      );
+
+      return {
+        style: [
+          { fontFamily: defaultFontFamily },
+          typoName ? typographies[typoName] : {},
+        ],
+      };
     },
   },
   lightColors: {
