@@ -5,7 +5,7 @@ import { Link } from 'expo-router';
 import ShopCard from './ShopCard';
 import ScreenBackground from '../ui/ScreenBackground';
 import ScreenDivider from '../ui/ScreenDivier';
-import useGrid from '../../hooks/useGrid';
+import { useBasisGrid } from '../../hooks/useGrid';
 
 const HELLO_QUERY = gql`
   {
@@ -42,7 +42,11 @@ const shopDatas = [
 
 export default function HomeContent() {
   const { loading, error, data } = useQuery(HELLO_QUERY);
-  const [gridLayoutHandler, gridStyle, gridItemStyle] = useGrid(2, 16, 20);
+  const [gridLayoutHandler, gridStyle, gridItemStyle] = useBasisGrid(
+    150,
+    16,
+    20
+  );
 
   return (
     <ScreenBackground>
