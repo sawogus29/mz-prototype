@@ -49,7 +49,7 @@ export default function HomeContent() {
   );
 
   return (
-    <ScreenBackground>
+    <ScreenBackground scroll>
       <View style={[styles.section, styles.summarySection]}>
         <Text headline1 style={styles.sectionTitle}>
           오늘의 점포 현황
@@ -66,9 +66,6 @@ export default function HomeContent() {
           어제와 비교한 오늘의 방문자수는?
         </Text>
       </View>
-      <Link href="/(main)/shop-registration">
-        <Text h1>매장등록</Text>
-      </Link>
       <Text>Hello {data ? data.hello : '?'}</Text>
       <Text bigTitle>bigTitle</Text>
       <Text headline1>headline1</Text>
