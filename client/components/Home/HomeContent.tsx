@@ -6,6 +6,7 @@ import ShopCard from './ShopCard';
 import ScreenBackground from '../ui/ScreenBackground';
 import ScreenDivider from '../ui/ScreenDivier';
 import { useBasisGrid } from '../../hooks/useGrid';
+import VisitorCard from './VisitorCard';
 
 const HELLO_QUERY = gql`
   {
@@ -21,6 +22,7 @@ const shopDatas = [
     numNotifications: 3,
     numVisitor: 78,
     numIssues: 5,
+    numVisitorYesterday: 100,
   },
   {
     id: '2',
@@ -29,6 +31,7 @@ const shopDatas = [
     numNotifications: 3,
     numVisitor: 78,
     numIssues: 5,
+    numVisitorYesterday: 78,
   },
   {
     id: '3',
@@ -37,6 +40,7 @@ const shopDatas = [
     numNotifications: 0,
     numVisitor: 78,
     numIssues: 5,
+    numVisitorYesterday: 30,
   },
 ];
 
@@ -47,6 +51,8 @@ export default function HomeContent() {
     16,
     20
   );
+  const [visitorGridLayoutHandler, visitorGridStyle, visitorGridItemStyle] =
+    useBasisGrid(290, 16, 12);
 
   return (
     <ScreenBackground scroll>
@@ -65,10 +71,17 @@ export default function HomeContent() {
         <Text headline1 style={styles.sectionTitle}>
           어제와 비교한 오늘의 방문자수는?
         </Text>
+        <View style={visitorGridStyle} onLayout={visitorGridLayoutHandler}>
+          {shopDatas.map((item) => (
+            <VisitorCard
+              style={visitorGridItemStyle}
+              key={item.id}
+              visitorToday={item.numVisitor}
+              visitorYesterday={item.numVisitorYesterday}
+            />
+          ))}
+        </View>
       </View>
-      <Text>Hello {data ? data.hello : '?'}</Text>
-      <Text bigTitle>bigTitle</Text>
-      <Text headline1>headline1</Text>
     </ScreenBackground>
   );
 }
