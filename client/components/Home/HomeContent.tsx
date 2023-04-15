@@ -7,6 +7,7 @@ import ScreenBackground from '../ui/ScreenBackground';
 import ScreenDivider from '../ui/ScreenDivier';
 import { useBasisGrid } from '../../hooks/useGrid';
 import VisitorCard from './VisitorCard';
+import PlusCardButton from '../ui/PlusCardButton';
 
 const HELLO_QUERY = gql`
   {
@@ -46,11 +47,8 @@ const shopDatas = [
 
 export default function HomeContent() {
   const { loading, error, data } = useQuery(HELLO_QUERY);
-  const [gridLayoutHandler, gridStyle, gridItemStyle] = useBasisGrid(
-    150,
-    16,
-    20
-  );
+  const [summaryGridLayoutHandler, summaryGridStyle, summaryGridItemStyle] =
+    useBasisGrid(150, 16, 20);
   const [visitorGridLayoutHandler, visitorGridStyle, visitorGridItemStyle] =
     useBasisGrid(290, 16, 12);
 
@@ -60,10 +58,14 @@ export default function HomeContent() {
         <Text headline1 style={styles.sectionTitle}>
           오늘의 점포 현황
         </Text>
-        <View style={gridStyle} onLayout={gridLayoutHandler}>
+        <View style={summaryGridStyle} onLayout={summaryGridLayoutHandler}>
           {shopDatas.map((item, i) => (
-            <ShopCard style={gridItemStyle} key={item.id} {...item} />
+            <ShopCard style={summaryGridItemStyle} key={item.id} {...item} />
           ))}
+          <PlusCardButton
+            containerStyle={[summaryGridItemStyle, styles.plusCard]}
+            title="매장 추가하기"
+          />
         </View>
       </View>
       <ScreenDivider />
@@ -101,7 +103,12 @@ const styles = StyleSheet.create({
     marginTop: 12,
     marginBottom: 40,
   },
+  plusCard: {
+    minHeight: 200,
+    marginTop: 28,
+  },
   visitorSection: {
     marginTop: 36,
+    marginBottom: 12,
   },
 });

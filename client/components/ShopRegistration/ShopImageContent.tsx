@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import { View, StyleSheet, Image } from 'react-native';
 
-import colors from '../../theme/colors';
 import TitleButtonLayout from '../ui/TitleButtonLayout';
 import { Button } from '@rneui/themed';
-import IconPlus from '../../assets/images/icon-circle-plus.svg';
 import { launchCameraAsync, launchImageLibraryAsync } from 'expo-image-picker';
 import OptionButton from './OptionButton';
 import ScreenBackground from '../ui/ScreenBackground';
 import { ShopImage } from '../../store/shop-profile/shop-profile-context';
+import PlusCardButton from '../ui/PlusCardButton';
 
 type LaunchAsync = typeof launchCameraAsync;
 
@@ -33,19 +32,9 @@ export default function ShopImageContent({ onNext }: ShopImageContentProps) {
   const imageOrButton = image ? (
     <Image style={styles.image} source={{ uri: image }} />
   ) : (
-    <Button
+    <PlusCardButton
+      containerStyle={styles.plusCardButton}
       title="이미지 추가하기"
-      icon={
-        <View>
-          <IconPlus width={40} height={40} />
-        </View>
-      }
-      iconPosition="top"
-      color={colors.GREY800}
-      containerStyle={styles.plusContainer}
-      style={styles.plus}
-      buttonStyle={styles.plusButton}
-      titleStyle={styles.plusText}
       onPress={launchLibraryAndSet}
     />
   );
@@ -86,22 +75,12 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-  plusContainer: {
-    height: '100%',
-  },
-  plus: {
-    height: '100%',
-  },
-  plusButton: {
-    height: '100%',
-  },
-  plusText: {
-    color: colors.GREY450,
-    marginTop: 12,
-  },
   optionContainer: {
     // backgroundColor: 'red',
     flexDirection: 'row',
     width: '100%',
+  },
+  plusCardButton: {
+    height: '100%',
   },
 });

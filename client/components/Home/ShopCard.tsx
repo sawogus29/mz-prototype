@@ -57,7 +57,7 @@ export default function ShopCard({
 const styles = StyleSheet.create({
   container: {
     paddingTop: 28,
-    backgroundColor: 'blue',
+    // backgroundColor: 'blue',
   },
   card: {
     width: '100%',
